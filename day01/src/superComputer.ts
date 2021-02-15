@@ -12,16 +12,15 @@ function callback(err: Error, result?: undefined): Error;
 function callback(err: null, result: number): number;
 
 function callback(err: Error | null, result: undefined | number): Error | number {
-    if (err) {
-        console.log(err.message);
-        return err;
-    }
-    console.log('Result:', result);
-    return result;
+  if (err) {
+    console.log(err.message);
+    return err;
+  }
+  console.log('Result:', result);
+  return result;
 }
 
-function superComputer(number1:number, sign:operation, number2:number, cb:Callback)
-{
+function superComputer(number1:number, sign:operation, number2:number, cb:Callback) {
   if (sign === operation.addition) {
     return cb(null, number1 + number2);
   }
