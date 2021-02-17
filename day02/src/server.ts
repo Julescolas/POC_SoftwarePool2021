@@ -10,21 +10,22 @@ server.get('/hello', function(request, response) {
 });
 
 server.get('/repeat-my-query', function(request, response) {
-  if (request.query.message == null) {
-    response.send("Bad request");
+  if (!request.query.message) {
     response.status(400);
+    response.send("Bad request");
   }
   if (request.query.message) {
       response.send(request.query.message);
   }
 });
 
-server.get('repeat-my-param/:message', function(request, response) {
-  response.send(request.params.message);
+server.get('/repeat-my-param/:message', function(request, response) {
+  let message = request.params.message;
+  response.send(message);
 });
 
 server.post('/repeat-my-body', function(request, response) {
-  if (!request.body) {
+  if (!Object.keys(request.body).length) {
     response.send("Bad request");
     response.status(400);
   }
@@ -34,22 +35,19 @@ server.post('/repeat-my-body', function(request, response) {
 });
 
 server.get('/repeat-my-header', function(request, response) {
-  if (!request.header.arguments) {
-    response.send("Bad request");
+  response.send(request.header('X-message'));
+  if (request.header === null) {
     response.status(400);
-  }
-
-  if (request.header.arguments) {
-    response.send(request.header.arguments);
+    response.send("Bad request");
   }  
 });
 
-server.get('repeat-my-cookie', function(request, response) {
-  if (!request.cookies) {
-    response.send("Bad request");
+server.get('/repeat-my-cookie', function(request, response) {
+  if (!Object.keys(request.cookies).length) {
     response.status(400);
+    response.send("Bad request");
   }
-  if (request.cookies) {
+  else {
     response.send(request.cookies);
   }
 });
