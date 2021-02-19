@@ -1,0 +1,22 @@
+{
+  "name": "day03",
+  "version": "1.0.0",
+  "description": "software pool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "software_pool"
+  ],
+  "author": "Colas_J",
+  "license": "ISC",
+  "dependencies": {
+    "env-var": "^7.0.0",
+    "pg": "^8.5.1",
+    "pg-god": "^1.0.11",
+    "reflect-metadata": "^0.1.13",
+    "tsc": "^1.20150623.0",
+    "typeorm": "^0.2.31"
+  }
+}
